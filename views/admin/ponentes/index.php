@@ -32,7 +32,8 @@
                                 Editar
                             </a>
 
-                            <form class="table__formulario">
+                            <form method="POST" action="/admin/ponentes/eliminar" class="table__formulario">
+                                <input type="hidden" name="id" value="<?php echo $ponente->id; ?>">
                                 <button class="table__accion table__accion--eliminar" type="submit">
                                     <i class="fa-solid fa-circle-xmark"></i>
                                     Eliminar
@@ -48,3 +49,7 @@
         <p class="text-center">No hay ponentes aún</p>
     <?php endif; ?>
 </div>
+
+<?php 
+    echo $paginacion;
+?>
