@@ -14,6 +14,18 @@
         @include m.contenedor;
     }
 
+    &__enlace {
+        @include m.enlace;
+    }
+
+    &__form {
+        display: flex
+    }
+
+    &__submit--logout{
+        @extend .header__enlace;
+    }
+
     &__navegacion {
         padding: 5rem;
         display: flex;
