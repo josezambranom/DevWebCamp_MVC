@@ -2,7 +2,7 @@
 @use 'base/variables' as v;
 
 .devwebcamp {
-    
+
     &__grid {
         @include m.contenedor;
         @include m.grid(1, 3rem);

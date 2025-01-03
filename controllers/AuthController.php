@@ -11,6 +11,7 @@ class AuthController {
 
         $alertas = [];
 
+
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             $usuario = new Usuario($_POST);
@@ -34,7 +35,7 @@ class AuthController {
                         $_SESSION['email'] = $usuario->email;
                         $_SESSION['admin'] = $usuario->admin ?? null;
 
-                        // Redireccion
+                        // Redirección 
                         if($usuario->admin) {
                             header('Location: /admin/dashboard');
                         } else {
@@ -130,6 +131,7 @@ class AuthController {
 
                     // Generar un nuevo token
                     $usuario->crearToken();
+                    
                     unset($usuario->password2);
 
                     // Actualizar el usuario
@@ -152,6 +154,7 @@ class AuthController {
                 }
             }
         }
+
 
         // Muestra la vista
         $router->render('auth/olvide', [
@@ -240,7 +243,7 @@ class AuthController {
             // Guardar en la BD
             $usuario->guardar();
 
-            Usuario::setAlerta('exito', 'Cuenta Comprobada exitosamente');
+            Usuario::setAlerta('exito', 'Cuenta Comprobada éxitosamente');
         }
 
      

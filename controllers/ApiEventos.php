@@ -1,11 +1,13 @@
-<?php 
+<?php
 
 namespace Controllers;
 
 use Model\EventoHorario;
 
-class ApiEventos {
+class APIEventos {
+
     public static function index() {
+
         $dia_id = $_GET['dia_id'] ?? '';
         $categoria_id = $_GET['categoria_id'] ?? '';
 
@@ -13,14 +15,12 @@ class ApiEventos {
         $categoria_id = filter_var($categoria_id, FILTER_VALIDATE_INT);
 
         if(!$dia_id || !$categoria_id) {
-            echo json_encode([]);
-            return;
+           echo json_encode([]);
+           return;
         }
 
-        // Consultar DB
+        // Consultar la base de datos
         $eventos = EventoHorario::whereArray(['dia_id' => $dia_id, 'categoria_id' => $categoria_id]) ?? [];
         echo json_encode($eventos);
     }
 }
-
-?>

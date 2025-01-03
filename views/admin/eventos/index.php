@@ -7,8 +7,9 @@
     </a>
 </div>
 
+
 <div class="dashboard__contenedor">
-    <?php if(!empty($eventos)): ?>
+    <?php if(!empty($eventos)) { ?>
         <table class="table">
             <thead class="table__thead">
                 <tr>
@@ -19,8 +20,9 @@
                     <th scope="col" class="table__th"></th>
                 </tr>
             </thead>
+
             <tbody class="table__tbody">
-                <?php foreach($eventos as $evento): ?>
+                <?php foreach($eventos as $evento) { ?>
                     <tr class="table__tr">
                         <td class="table__td">
                             <?php echo $evento->nombre; ?>
@@ -29,13 +31,13 @@
                             <?php echo $evento->categoria->nombre; ?>
                         </td>
                         <td class="table__td">
-                            <?php echo $evento->dia->nombre . ', ' . $evento->hora->hora; ?>
+                            <?php echo $evento->dia->nombre . ", " . $evento->hora->hora; ?>
                         </td>
                         <td class="table__td">
-                            <?php echo $evento->ponente->nombre . ' ' . $evento->ponente->apellido;?>
+                            <?php echo $evento->ponente->nombre . " " . $evento->ponente->apellido; ?>
                         </td>
                         <td class="table__td--acciones">
-                            <a class="table__accion table__accion--editar" href="/admin/eventos/editar?id=<?php echo $evento->id;?>">
+                            <a class="table__accion table__accion--editar" href="/admin/eventos/editar?id=<?php echo $evento->id; ?>">
                                 <i class="fa-solid fa-pencil"></i>
                                 Editar
                             </a>
@@ -49,12 +51,12 @@
                             </form>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php } ?>
             </tbody>
         </table>
-    <?php else: ?>
-        <p class="text-center">No hay eventos aún</p>
-    <?php endif; ?>
+    <?php } else { ?>
+        <p class="text-center">No Hay Eventos Aún</p>
+    <?php } ?>
 </div>
 
 <?php 

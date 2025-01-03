@@ -1,5 +1,5 @@
-@use 'base/variables' as v;
 @use 'base/mixins' as m;
+@use 'base/variables' as v;
 
 .boletos {
     &__grid {
@@ -15,7 +15,6 @@
     border-radius: 2rem;
     color: v.$blanco;
     position: relative;
-
     &::before,
     &::after {
         position: absolute;
@@ -27,74 +26,65 @@
     }
 
     &::before {
-        clip-path: circle(50% at 15% 50%);
+        clip-path: circle(50% at 25% 50%);
         left: 0;
     }
-
     &::after {
-        clip-path: circle(50% at 85% 50%);
+        clip-path: circle(50% at 75% 50%);
         right: 0;
     }
 
     &--presencial {
         background-color:hsla(178,100%,39%,1);
         background-image:
-        radial-gradient(at 52% 0%, hsla(209,100%,47%,1) 0px, transparent 50%),
-        radial-gradient(at 0% 0%, hsla(178,100%,39%,1) 0px, transparent 50%),
-        radial-gradient(at 0% 48%, hsla(209,100%,47%,1) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, hsla(178,100%,39%,1) 0px, transparent 50%),
-        radial-gradient(at 52% 100%, hsla(209,100%,47%,1) 0px, transparent 50%),
-        radial-gradient(at 0% 100%, hsla(178,100%,39%,1) 0px, transparent 50%),
-        radial-gradient(at 100% 56%, hsla(209,100%,47%,1) 0px, transparent 50%);
+        radial-gradient(at 40% 20%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 69% 82%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 26% 91%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(209,100%,47%,1) 0px, transparent 50%),
+        radial-gradient(at 27% 22%, hsla(178,100%,39%,1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(209,100%,47%,1) 0px, transparent 50%);
     }
-
     &--virtual {
         background-color: v.$secundario;
     }
-
     &--gratis {
         background-color: v.$azul;
     }
 
+    
+
     &__logo {
         @include m.logo;
-        & {
-            @include m.texto-fluido(2rem, 4rem);
-        }
+        @include m.texto-fluido(2rem, 4rem);
     }
-
     &__plan {
         font-size: 2rem;
-        margin: 3rem 0 0 0;
         text-transform: uppercase;
+        margin: 3rem 0 0 0;
     }
-
     &__precio {
         margin: 3rem 0 0 0;
+        font-weight: v.$black;
         font-size: 4rem;
-        font-weight: v.$bold;
     }
 
+    &__enlace-contenedor {
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+    }
     &__enlace {
         @include m.boton(v.$azul, v.$blanco);
-        &{
-            width: auto;
-        }
-
-        &-contenedor {
-            margin-top: 5rem;
-            display: flex;
-            justify-content: center;
-        }
+        width: auto;
     }
 
-    $modificador: &; 
+    $modificador: &;
 
     &--acceso {
         width: 30rem;
         height: 50rem;
         padding: 10rem 3rem;
-
         @include m.tablet {
             width: 60rem;
             height: 30rem;
@@ -108,56 +98,56 @@
             @include m.texto-fluido(2rem, 3rem);
             margin: 0;
             text-align: left;
+    
         }
-
+        #{$modificador}__nombre {
+           font-size: 2.4rem;
+           text-transform: uppercase;
+           font-weight: v.$black;
+        }
         #{$modificador}__codigo {
             font-size: 4rem;
             font-weight: v.$bold;
             text-align: center;
             position: absolute;
             bottom: 7rem;
-            left: 0;
             margin: 0;
+            left: 0;
             width: 100%;
 
             @include m.tablet {
-                rotate: 90deg;
-                transform-origin: 0 0;
-                top: 0;
-                left: calc(100% - 5rem);
-                width: 30rem;
-
+               rotate: 90deg;
+               transform-origin: 0 0;
+               top: 0;
+               left: calc(100% - 5rem);
+               width: 30rem;
             }
         }
 
-        #{$modificador}__nombre {
-            font-size: 2.4rem;
-            text-transform: uppercase;
-            font-weight: v.$black;
-        }
+
     }
 
-    &::before{
+    &::before {
         clip-path: circle(50% at 50% 25%);
         left: calc(50% - 2.5rem);
         top: 0;
-
         @include m.tablet {
-            clip-path: circle(50% at 15% 50%);
+            clip-path: circle(50% at 25% 50%);
             left: 0;
             top: calc(50% - 2.5rem);
         }
     }
 
-    &::after{
+    &::after {
         clip-path: circle(50% at 50% 75%);
         left: calc(50% - 2.5rem);
         top: calc(100% - 5rem);
-
         @include m.tablet {
-            clip-path: circle(50% at 85% 50%);
-            left: calc(100% - 5rem);
+            clip-path: circle(50% at 75% 50%);
+            left:  calc(100% - 5rem);
             top: calc(50% - 2.5rem);
         }
     }
+
+    
 }

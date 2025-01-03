@@ -1,26 +1,30 @@
-(function(){
-    const tagsInput = document.querySelector('#tags_input');
+(function() {
+
+    const tagsInput = document.querySelector('#tags_input')
 
     if(tagsInput) {
+
         const tagsDiv = document.querySelector('#tags');
         const tagsInputHidden = document.querySelector('[name="tags"]');
 
         let tags = [];
 
-        //Recuperar del input oculto
+        // Recuperar del input oculto
         if(tagsInputHidden.value !== '') {
             tags = tagsInputHidden.value.split(',');
             mostrarTags();
         }
+ 
+        // Escuchar los cambios en el input
+        tagsInput.addEventListener('keypress', guardarTag)
 
-        // Escuchar los cambios del input
-        tagsInput.addEventListener('keypress', guardarTab);
-
-        function guardarTab(ev) {
-            if(ev.keyCode === 44) {
-                if(ev.target.value.trim() === '' || ev.target.value < 1) return;
-                ev.preventDefault();
-                tags = [...tags, ev.target.value.trim()];
+        function guardarTag(e) {
+            if(e.keyCode === 44) {
+                if(e.target.value.trim() === '' || e.target.value < 1) { 
+                    return
+                }
+                e.preventDefault();
+                tags = [...tags, e.target.value.trim()];
                 tagsInput.value = '';
                 mostrarTags();
             }
@@ -30,22 +34,22 @@
             tagsDiv.textContent = '';
             tags.forEach(tag => {
                 const etiqueta = document.createElement('LI');
-                etiqueta.classList.add('formulario__tag');
+                etiqueta.classList.add('formulario__tag')
                 etiqueta.textContent = tag;
-                etiqueta.ondblclick = eliminarTag;
-                tagsDiv.appendChild(etiqueta);
-            });
+                etiqueta.ondblclick = eliminarTag
+                tagsDiv.appendChild(etiqueta)
+            })
             actualizarInputHidden();
-        }
+        }   
 
-        function eliminarTag(ev) {
-            ev.target.remove();
-            tags = tags.filter(tag => tag !== ev.target.textContent);
+        function eliminarTag(e) {
+            e.target.remove()
+            tags = tags.filter(tag => tag !== e.target.textContent)
             actualizarInputHidden();
         }
 
         function actualizarInputHidden() {
-            tagsInputHidden.value = tags.toString();
+           tagsInputHidden.value = tags.toString();
         }
     }
 

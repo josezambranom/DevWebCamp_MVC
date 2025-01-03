@@ -3,10 +3,9 @@
 namespace Model;
 
 class Ponente extends ActiveRecord {
-    protected static $tabla = "ponentes";
+    protected static $tabla = 'ponentes';
     protected static $columnasDB = ['id', 'nombre', 'apellido', 'ciudad', 'pais', 'imagen', 'tags', 'redes'];
 
-    public $id, $nombre, $apellido, $ciudad, $pais, $imagen, $tags, $redes;
 
     public function __construct($args = [])
     {
@@ -16,6 +15,7 @@ class Ponente extends ActiveRecord {
         $this->ciudad = $args['ciudad'] ?? '';
         $this->pais = $args['pais'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
+        $this->tags = $args['tags'] ?? '';
         $this->redes = $args['redes'] ?? '';
     }
 
@@ -41,6 +41,6 @@ class Ponente extends ActiveRecord {
     
         return self::$alertas;
     }
-}
 
-?>
+
+}
